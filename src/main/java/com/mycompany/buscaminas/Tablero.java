@@ -15,6 +15,7 @@ import java.util.Random;
  */
 public class Tablero implements Serializable {
     
+    
     private int nivel;
     private int x;
     private int y;

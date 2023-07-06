@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 public class Jugada implements Serializable{
  
+    
     private int tipo;
     private int x;
     private int y;

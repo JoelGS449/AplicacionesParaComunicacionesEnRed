@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html;" />
+	
+	<link href="estilo.css" rel="stylesheet" type="text/css">
+	<link rel=”shortcut icon” href=”favicon.ico” type=”image/x-icon” />
+	<title>Servidor HTTP</title>
+</head>
+<body>
+
+
+<h2>Peticiones</h2>
+
+
+<div class="row">
+  
+  <div class="column">
+	<center>
+	<h4>Formulario de Registro GET</h4>
+	</center>
+	<!-- FORM ACTION="mailto:dirección_de_email" METHOD="POST" ENCTYPE="TEXT/PLAIN" -->
+	<FORM ACTION="http://127.0.0.1:8000" method="get" class="formularios">
+
+		Nombre: <BR>
+		<INPUT TYPE="text" NAME="Apellido">
+		<br>
+		Dirección: <BR>
+		<INPUT TYPE="text" NAME="Direccion">
+		<br>
+		Teléfono: <BR>
+		<INPUT TYPE="text" NAME="Telefono">
+		<br>
+		Comentarios:<br>
+		<TEXTAREA NAME="comentario" ROWS="7" COLS="40">
+		</TEXTAREA>
+		<INPUT TYPE="submit" VALUE="Enviar datos">
+		<INPUT TYPE="reset" VALUE="Borrar datos">
+	</FORM>
+  </div>
+  
+  <div class="column">
+	<center>
+	<h3>Inicio de Sesión</h3>
+	<h4>Prueba POST</h4>
+	</center>
+
+	<FORM METHOD="POST" ENCTYPE="TEXT/PLAIN" action="http://127.0.0.1:8000">
+	Usuario: <BR>
+	<INPUT TYPE="text" NAME="User">
+	<br>
+	Contraseña: <BR>
+	<INPUT TYPE="password" NAME="Pass">
+	<br>
+	<INPUT TYPE="submit" VALUE="Login" target="_blank" rel="noopener noreferrer">
+	</FORM>
+  </div>
+  
+  <div class="columnHEAD">
+	<center>
+		<h4>Prueba HEAD, solicitar tamaño</h4>
+		<INPUT TYPE="submit" VALUE="Tamaño imagen" onclick="HeadTest('shaq.jpg')">
+		<br>
+		<INPUT TYPE="submit" VALUE="Tamaño GIF" onclick="HeadTest('perro.gif')">
+		<br>
+		<INPUT TYPE="submit" VALUE="Tamaño PDF" onclick="HeadTest('pdf.pdf')">
+		<br>
+		<INPUT TYPE="submit" VALUE="Tamaño Video" onclick="HeadTest('Mar.mp4')">
+		<br>
+		<INPUT TYPE="text" ID="NombreArchivo">
+		<INPUT TYPE="submit" VALUE="Tamaño Otro" onclick="HeadTestOtro()">
+	</center>
+  </div>
+  
+</div>
+
+</body>
+
+<script>
+function HeadTest(myLabel){
+    var http = new XMLHttpRequest();
+	var url = '/?archivo=' + myLabel + "*";
+	
+    http.open('HEAD', url);
+    http.onreadystatechange = function() {
+		if (http.readyState === http.HEADERS_RECEIVED) {
+			const contentLength = http.getResponseHeader("Content-Length");
+			if(contentLength > 0)
+				alert("Tamaño: " + contentLength + " Bytes.");
+			else
+				alert("El archivo no existe.");
+				
+		}
+    };
+    http.send();
+}
+
+function HeadTestOtro(){
+	HeadTest(document.getElementById('NombreArchivo').value);
+}
+
+function PutTest(url, callback){
+    var http = new XMLHttpRequest();
+    http.open('PUT', url);
+    http.onreadystatechange = function() {
+        if (this.readyState == this.DONE) {
+            callback(this.status != 404);
+        }
+		if (http.readyState === http.HEADERS_RECEIVED) {
+			alert("¡El servidor terminó el proceso!");
+		}
+    };
+    http.send();
+}
+</script>
+
+</html>

@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+}
+
+#boton {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Garamond, serif;
+	
+	outline: 0;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	
+	background-color:#333366;
+	color:white;
+	
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+#boton:hover,#boton:active,#boton:focus {
+	background: #666699;
+}
+
+.titleImg{
+	float: left;
+	max-width: 25%;
+	flex: 100%;
+}
+
+.titleText{
+	float: right;
+	min-width: 75%;
+	text-align: left;
+	color: black;
+	text-shadow: 2px 2px 5px #2f639c;
+	font-family: Copperplate, Copperplate, Fantasy;
+	font-size: 4vw;
+	margin-left: 25px;
+}
+
+.title{
+	display: flex;
+	align-items:center;
+}
+
+.columnUpper {
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+
+.rowUpper {
+	background-color:#333366;
+	color:white;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+
+.column {
+	float: left;
+	width: 20%;
+	padding: 20px;
+	text-align: left;
+	font-weight: normal;
+}
+
+
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.rowUpper:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.footer {
+	background-color:darkgreen;
+	color:white;
+	text-align: center;
+	height: 80px;
+	line-height: 40px;
+}
+
+@media screen and (max-width: 1079px) {
+	.titleText{
+		font-size: 5vw;
+	}
+	.rowUpper {
+		height: 80px;
+	}
+	.column {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.titleText{
+		font-size: 6vw;
+	}
+	.rowUpper {
+		height: 120px;
+	}
+	.column {
+		width: 100%;
+	}
+}
+
+body{
+	/* color: white; */
+	background-color: #a6ffb7;
+}
+
+h2 {
+	text-align: center;
+	font-family: Verdana, sans-serif;
+}
+
+p {
+	text-align: left;
+}
+
+strong {
+  font-weight: bold;
+}
+
+iframe {
+	display:block;
+}
+
+img {
+  display: block;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.formularios{
+	width: 200px;
+	background-color: #073b6e6d;
+	text-align: center;
+	padding: 10px;
+}
+
+.formularios input, .formularios textarea, .formularios button{
+	width: 150px;
+	margin-top: 10px;
+}
+
+.columnHEAD, .columnArchivos {
+	text-align: center;
+	float: left;
+	width: 20%;
+	padding: 20px;
+	text-align: left;
+	font-weight: normal;
+}
+
+.columnHEAD input, .columnArchivos input{
+	margin-top: 10px;
+	width: 150px;
+}
+
+.columnArchivos button{
+	margin-top: 10px;
+	width: 150px;
+}
+
